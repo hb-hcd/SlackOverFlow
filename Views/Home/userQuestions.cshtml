@@ -1,0 +1,36 @@
+﻿@model IEnumerable<NotQuora.Models.Question>
+
+@{
+    ViewData["Title"] = "userQuestions";
+}
+
+<h2>You have asked these questions</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.Raw(item.Description)
+            </td>
+            <td>
+                <a asp-action="editQuestion" asp-route-qid="@item.Id" asp-route-uid="@ViewBag.currUserId">Edit</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

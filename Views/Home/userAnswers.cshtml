@@ -1,0 +1,57 @@
+﻿@model IEnumerable<NotQuora.Models.Answer>
+
+@{
+    ViewData["Title"] = "userAnswers";
+}
+
+<h1>userAnswers</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Upvote)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Downvote)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsCorrect)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnswerTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.Raw(item.Content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Upvote)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Downvote)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsCorrect)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnswerTime)
+            </td>
+            <td>
+                <a asp-action="editAnswer" asp-route-aid="@item.Id" asp-route-uid="@ViewBag.currUserId">Edit</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

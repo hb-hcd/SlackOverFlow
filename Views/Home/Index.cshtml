@@ -1,0 +1,21 @@
+﻿@model IEnumerable<NotQuora.Models.Question>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">SlackOverFlow</h1>
+    <div>
+        <a asp-action="allQuestions">Browsing questions</a>
+    </div>
+    <div>
+        <a asp-action="CreateQuestion">Ask a question</a>
+    </div>
+    <div>
+        <a asp-action="ManageUserRole">Set role to user</a>
+    </div>
+    <div>
+        <a asp-action="UserCenter">Go to user center</a>
+    </div>
+</div>

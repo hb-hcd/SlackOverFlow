@@ -1,0 +1,25 @@
+﻿@model Question
+
+<h2>Edit question</h2>
+<div class="row">
+    <div class="col-md-6">
+        <form method="post" asp-action="editQuestion" asp-route-uid="@ViewBag.uid">
+            <div class="form-group">
+                Title:
+                <input asp-for="Title" class="form-control" value="@Model.Title" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Description:
+                <textarea asp-for="Description" class="form-control" value="@Model.Description"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <input hidden asp-for="Id" value="@Model.Id" />
+            <input hidden asp-for="TagId" value="@Model.TagId" />
+            <input hidden  asp-for="User" value ="@Model.User"/>
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

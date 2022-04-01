@@ -1,0 +1,38 @@
+﻿@model IEnumerable<NotQuora.Models.Question>
+
+@{
+    ViewData["Title"] = "sortByTag";
+}
+
+<h2>All Questions under @ViewBag.tagName </h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-action="sortByTag">
+    <div class="form-group">
+        <select name="TagId" class="form-control" asp-items="ViewBag.taglist">
+            <option>Sort by tag</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-primary" />
+    </div>
+</form>
+<hr />
+<div>
+    @foreach ( var item in Model )
+    {
+        <div>
+            <div style="display:inline-block">
+                <h6>@item.User.UserName - Reputation: @item.User.Reputation | @item.Answers.Count() Answers </h6>
+            </div>
+            <div>
+                <span>Tag: @item.Tag.Name</span>
+                <p>Question: <a asp-action="questionDetail" asp-route-qid="@item.Id" style="text-decoration:none">@item.Title</a> </p>
+                <p>Description: @item.Description</p>
+            </div>
+        </div>
+        <hr />
+    }
+</div>

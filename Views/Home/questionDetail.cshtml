@@ -1,0 +1,40 @@
+﻿@model NotQuora.Models.Question
+@{
+    ViewData["Title"] = "questionDetail";
+}
+
+
+<div>
+    <div>
+        <h3>Question: @Model.Title  </h3>
+        <p>Description: @Model.Description </p>
+        <a type="button" class="btn btn-primary" asp-action="postAnswer" asp-route-qid="@Model.Id">Post your answer</a>
+    </div>
+    <hr />
+    <div>
+        @if ( ViewBag.allAnswers ==null)
+        {
+            <div>There is no answer yet. Post an answer by clicking <a asp-action="postAnswer" asp-route-qid="@Model.Id">here</a> </div>
+        }
+        else
+        {
+            @foreach ( var answer in ViewBag.allAnswers )
+            {
+                <div>
+                    <div>@answer.User.UserName <span style="float:right">Time: @answer.AnswerTime.Date.ToString("d")</span> </div>
+                    <div>@Html.Raw(answer.Content)</div>
+                    <div>
+                        <span><a asp-action="Upvote" asp-route-qid="@Model.Id" asp-route-aid="@answer.Id">Upvote</a> - @answer.Upvote </span> |
+                        <span><a asp-action="Downvote" asp-route-qid="@Model.Id" asp-route-aid="@answer.Id">Downvote</a>- @answer.Downvote</span>
+                    </div>
+                </div>
+                <hr />
+            }
+        }
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+    </div>
+

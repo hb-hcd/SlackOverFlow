@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"] = "UserCenter";
+}
+
+<h1 style="align-content:center">User Center</h1>
+
+<div class="text-center">
+    <div>
+        <a asp-action="userQuestions" asp-route-uid = "@ViewBag.userId">User's questions</a>
+    </div>
+    <div>
+        <a asp-action="userAnswers" asp-route-uid = "@ViewBag.userId">User's answers</a>
+    </div>
+    <div>
+        <a asp-action="markCorrectAnswer" asp-route-uid = "@ViewBag.userId">Mark a correct answer</a>
+    </div>
+</div>
+
+

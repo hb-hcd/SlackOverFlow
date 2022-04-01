@@ -1,0 +1,23 @@
+﻿<h2>Set role for users</h2>
+<hr />
+<div>
+    @TempData["message"]
+</div>
+<p>Admin: @ViewBag.adminName</p>
+<form method="post" class="col-8"> 
+    <div class="form-group" style="display:inline-block">
+        Username:
+        <select name="userEmail" class="form-control" asp-items="@ViewBag.userList">
+            <option>Select a user</option>
+        </select>
+    </div>
+     <div class="form-group" style="display:inline-block">
+         Role:
+        <select name="roleName" class="form-control" asp-items="@ViewBag.roleList">
+            <option>Select a role</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Confirm" class="btn btn-primary" />
+    </div>
+</form>
